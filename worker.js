@@ -143,6 +143,8 @@ export default {
     .card:nth-child(2) { animation-delay: 0.2s; }
     .card:nth-child(3) { animation-delay: 0.3s; }
     .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
 
     .card:hover {
       transform: translateY(-7px);
@@ -368,6 +370,32 @@ export default {
         <p>
           Curious about who's behind all this?
           Come say hello!
+        </p>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+
+
+      <a class="card"
+         href="https://qed.shauryaswebsites.com/">
+        <div class="chaos-label">✨ Chaotic Pick</div>
+        <div class="icon-box">🧩</div>
+        <h2>QED Project</h2>
+        <p>
+          Divide a 5×5 grid into connected regions
+          and see which letter wins the majority.
+        </p>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+
+
+      <a class="card"
+         href="https://presidentialsim.shauryaswebsites.com/">
+        <div class="chaos-label">✨ Chaotic Pick</div>
+        <div class="icon-box">🗳️</div>
+        <h2>Road to 270</h2>
+        <p>
+          Build your candidate, campaign across the country,
+          and win 270 electoral votes.
         </p>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
