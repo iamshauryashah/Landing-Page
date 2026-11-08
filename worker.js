@@ -145,6 +145,7 @@ export default {
     .card:nth-child(4) { animation-delay: 0.4s; }
     .card:nth-child(5) { animation-delay: 0.5s; }
     .card:nth-child(6) { animation-delay: 0.6s; }
+    .card:nth-child(7) { animation-delay: 0.7s; }
 
     .card:hover {
       transform: translateY(-7px);
@@ -396,6 +397,17 @@ export default {
         <p>
           Build your candidate, campaign across the country,
           and win 270 electoral votes.
+        </p>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="card"
+         href="https://soccersim.shauryaswebsites.com/">
+        <div class="chaos-label">✨ Chaotic Pick</div>
+        <div class="icon-box">⚽</div>
+        <h2>Soccer Sim</h2>
+        <p>
+          Jump into the soccer league simulator.
         </p>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
