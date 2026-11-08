@@ -245,6 +245,40 @@ export default {
       color: #f472b6;
     }
 
+    .heart-trigger {
+      font: inherit;
+      border: 0;
+      background: transparent;
+      padding: 10px;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .heart-trigger:focus-visible,
+    .trapdoor:focus-visible {
+      outline: 3px solid #c4b5fd;
+      outline-offset: 4px;
+    }
+
+    .trapdoor {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      margin-top: 16px;
+      color: #c4b5fd;
+      border: 1px solid rgba(192, 132, 252, 0.4);
+      border-radius: 14px;
+      background: #141b2e;
+      box-shadow: 0 0 25px rgba(124, 58, 237, 0.2);
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .trapdoor[hidden] { display: none; }
+    .trapdoor:hover { color: #67e8f9; }
+    .trapdoor svg { width: 46px; height: 46px; }
+
     /* Entrance animation */
     @keyframes fadeUp {
       from {
@@ -421,13 +455,36 @@ export default {
       <div>
         Built with fun, and
         questionable design decisions.
-        <span class="heart">♥</span>
+        <button class="heart heart-trigger" id="secret-heart" type="button" aria-label="A little love" aria-controls="secret-trapdoor" aria-expanded="false">♥</button>
+      </div>
+      <div>
+        <a class="trapdoor" id="secret-trapdoor" href="https://secret.shauryaswebsites.com/" aria-label="Enter the secret trapdoor" title="You found the trapdoor. Step inside." hidden>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 39 32 27 56 39 32 53Z" fill="#080c18"/>
+            <path d="M8 39V15L32 3V27Z" fill="#26324b"/>
+            <path d="M14 22 27 15M14 29 27 22"/>
+            <circle cx="22" cy="24" r="2"/>
+            <path d="M27 36V49M37 36V49M27 40H37M27 45H37"/>
+          </svg>
+        </a>
       </div>
     </footer>
 
   </main>
 
   <script>
+    const secretHeart = document.getElementById("secret-heart");
+    const secretTrapdoor = document.getElementById("secret-trapdoor");
+    let heartClicks = 0;
+    secretHeart.addEventListener("click", () => {
+      heartClicks++;
+      if (heartClicks === 5) {
+        secretTrapdoor.hidden = false;
+        secretHeart.setAttribute("aria-expanded", "true");
+        secretTrapdoor.focus();
+      }
+    });
+
     // The original collection of weird colors
     const weirdColors = [
       "#ff00ff", // Neon pink
