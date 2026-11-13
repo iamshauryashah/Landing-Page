@@ -116,17 +116,17 @@ export default {
     .projects {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      gap: 16px;
     }
 
     .card {
       position: relative;
       display: flex;
       flex-direction: column;
-      min-height: 220px;
-      padding: 26px;
+      min-height: 190px;
+      padding: 22px;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
+      border-radius: 17px;
       background: var(--card);
       color: var(--text);
       text-decoration: none;
@@ -164,17 +164,17 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 54px;
-      height: 54px;
-      border-radius: 15px;
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
       background: rgba(255, 255, 255, 0.08);
-      font-size: 27px;
-      margin-bottom: 28px;
+      font-size: 24px;
+      margin-bottom: 20px;
     }
 
     .card h2 {
-      font-size: 21px;
-      margin: 0 0 9px;
+      font-size: 20px;
+      margin: 0 0 8px;
       letter-spacing: -0.5px;
     }
 
@@ -188,8 +188,8 @@ export default {
 
     .arrow {
       position: absolute;
-      right: 24px;
-      bottom: 24px;
+      right: 20px;
+      bottom: 20px;
       font-size: 23px;
       color: #a5b4fc;
       transition: transform 0.25s ease;
@@ -217,8 +217,8 @@ export default {
     .chaos-label {
       display: none;
       position: absolute;
-      top: 24px;
-      right: 20px;
+      top: 20px;
+      right: 18px;
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 0.3px;
@@ -318,12 +318,12 @@ export default {
       }
 
       .card {
-        min-height: 180px;
-        padding: 22px;
+        min-height: 164px;
+        padding: 19px;
       }
 
       .icon-box {
-        margin-bottom: 18px;
+        margin-bottom: 16px;
       }
 
       .chaos-label {
