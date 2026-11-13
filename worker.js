@@ -147,6 +147,7 @@ export default {
     .card:nth-child(6) { animation-delay: 0.6s; }
     .card:nth-child(7) { animation-delay: 0.7s; }
     .card:nth-child(8) { animation-delay: 0.8s; }
+    .card:nth-child(9) { animation-delay: 0.9s; }
 
     .card:hover {
       transform: translateY(-7px);
@@ -455,6 +456,18 @@ export default {
         <p>
           Step into the army simulator and put
           your strategy to the test.
+        </p>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="card"
+         href="https://soccermanager.shauryaswebsites.com/">
+        <div class="chaos-label">✨ Chaotic Pick</div>
+        <div class="icon-box">📋</div>
+        <h2>Soccer Manager</h2>
+        <p>
+          Build your squad, manage your budget,
+          and lead your club to victory.
         </p>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
