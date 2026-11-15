@@ -60,8 +60,7 @@ export default {
       </h1>
 
       <p class="subtitle">
-        Projects, experiments, games, and so much more...
-        Pick something interesting and dive in!
+        Build an empire, lead your soccer team to championship glory, or try something unexpected. Your move...
       </p>
     </header>
 
