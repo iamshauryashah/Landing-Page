@@ -11,335 +11,36 @@ export default {
   <title>Shaurya's Website ✨</title>
 
   <style>
-    :root {
-      color-scheme: dark;
-      --background: #0b1020;
-      --card: #1b2438;
-      --text: #ffffff;
-      --muted: #a4acc2;
-      --accent: #c084fc;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      background: var(--background);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    /* Ambient background glow */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background:
-        radial-gradient(
-          ellipse at 15% 15%,
-          rgba(124, 58, 237, 0.22),
-          transparent 45%
-        ),
-        radial-gradient(
-          ellipse at 85% 80%,
-          rgba(37, 99, 235, 0.18),
-          transparent 45%
-        );
-    }
-
-    .page {
-      width: min(100% - 40px, 850px);
-      min-height: 100vh;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 70px 0 30px;
-    }
-
-    /* Hero section */
-    .hero {
-      text-align: center;
-      margin-bottom: 42px;
-      animation: fadeUp 0.7s ease both;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      padding: 9px 16px;
-      border: 1px solid rgba(192, 132, 252, 0.25);
-      border-radius: 100px;
-      background: rgba(192, 132, 252, 0.08);
-      color: #c4b5fd;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 24px 0 16px;
-      font-size: clamp(38px, 7vw, 66px);
-      font-weight: 800;
-      letter-spacing: -2.5px;
-      line-height: 1.12;
-    }
-
-    h1 span {
-      background: linear-gradient(
-        110deg,
-        #c084fc,
-        #818cf8,
-        #67e8f9
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.7;
-      max-width: 530px;
-      margin: 0 auto;
-    }
-
-    /* Project cards */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      min-height: 190px;
-      padding: 22px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 17px;
-      background: var(--card);
-      color: var(--text);
-      text-decoration: none;
-      overflow: hidden;
-      isolation: isolate;
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-      animation: fadeUp 0.7s ease both;
-    }
-
-    .card:nth-child(1) { animation-delay: 0.1s; }
-    .card:nth-child(2) { animation-delay: 0.2s; }
-    .card:nth-child(3) { animation-delay: 0.3s; }
-    .card:nth-child(4) { animation-delay: 0.4s; }
-    .card:nth-child(5) { animation-delay: 0.5s; }
-    .card:nth-child(6) { animation-delay: 0.6s; }
-    .card:nth-child(7) { animation-delay: 0.7s; }
-    .card:nth-child(8) { animation-delay: 0.8s; }
-    .card:nth-child(9) { animation-delay: 0.9s; }
-
-    .card:hover {
-      transform: translateY(-7px);
-      border-color: rgba(192, 132, 252, 0.45);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
-    }
-
-    .card:focus-visible {
-      outline: 3px solid #c4b5fd;
-      outline-offset: 4px;
-    }
-
-    .icon-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 46px;
-      height: 46px;
-      border-radius: 13px;
-      background: rgba(255, 255, 255, 0.08);
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .card h2 {
-      font-size: 20px;
-      margin: 0 0 8px;
-      letter-spacing: -0.5px;
-    }
-
-    .card p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--muted);
-      margin: 0;
-      padding-right: 20px;
-    }
-
-    .arrow {
-      position: absolute;
-      right: 20px;
-      bottom: 20px;
-      font-size: 23px;
-      color: #a5b4fc;
-      transition: transform 0.25s ease;
-    }
-
-    .card:hover .arrow {
-      transform: translate(4px, -4px);
-    }
-
-    /* Randomly colored card */
-    .card.chaotic {
-      color: #111827;
-      border-color: rgba(255, 255, 255, 0.25);
-    }
-
-    .card.chaotic p,
-    .card.chaotic .arrow {
-      color: #1f2937;
-    }
-
-    .card.chaotic .icon-box {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .chaos-label {
-      display: none;
-      position: absolute;
-      top: 20px;
-      right: 18px;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-      color: #111827;
-      background: rgba(255, 255, 255, 0.4);
-      padding: 7px 10px;
-      border-radius: 100px;
-    }
-
-    .card.chaotic .chaos-label {
-      display: block;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      margin-top: 45px;
-      color: #7f8ba5;
-      font-size: 13px;
-      line-height: 1.8;
-      animation: fadeUp 0.7s 0.5s both;
-    }
-
-    footer .heart {
-      color: #f472b6;
-    }
-
-    .heart-trigger {
-      font: inherit;
-      border: 0;
-      background: transparent;
-      padding: 10px;
-      cursor: pointer;
-      touch-action: manipulation;
-    }
-
-    .heart-trigger:focus-visible,
-    .trapdoor:focus-visible {
-      outline: 3px solid #c4b5fd;
-      outline-offset: 4px;
-    }
-
-    .trapdoor {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 64px;
-      height: 64px;
-      margin-top: 16px;
-      color: #c4b5fd;
-      border: 1px solid rgba(192, 132, 252, 0.4);
-      border-radius: 14px;
-      background: #141b2e;
-      box-shadow: 0 0 25px rgba(124, 58, 237, 0.2);
-      animation: fadeUp 0.5s ease both;
-    }
-
-    .trapdoor[hidden] { display: none; }
-    .trapdoor:hover { color: #67e8f9; }
-    .trapdoor svg { width: 46px; height: 46px; }
-
-    /* Entrance animation */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Mobile layout */
-    @media (max-width: 600px) {
-      .page {
-        width: min(100% - 32px, 440px);
-        padding-top: 55px;
-      }
-
-      .hero {
-        margin-bottom: 30px;
-      }
-
-      h1 {
-        letter-spacing: -1.5px;
-      }
-
-      .subtitle {
-        font-size: 15px;
-      }
-
-      .projects {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .card {
-        min-height: 164px;
-        padding: 19px;
-      }
-
-      .icon-box {
-        margin-bottom: 16px;
-      }
-
-      .chaos-label {
-        top: 20px;
-        right: 16px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
+    :root { color-scheme: dark; --background:#0b1020; --card:#171f33; --text:#f0f2fa; --muted:#a9b2c9; --accent:#c4b5fd; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:radial-gradient(ellipse at 10% 0%,#231841 0,transparent 55%),var(--background); color:var(--text); }
+    .page { width:min(calc(100% - 64px),1600px); margin:0 auto; padding:28px 0 18px; }
+    .hero { margin-bottom:24px; }
+    .eyebrow { color:var(--muted); font-size:14px; font-weight:600; }
+    h1 { font-size:clamp(28px,3vw,36px); line-height:1.2; letter-spacing:-1px; margin:20px 0 8px; }
+    .subtitle { color:var(--muted); font-size:14px; line-height:1.6; max-width:760px; margin:0; }
+    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:14px; }
+    .card { position:relative; display:grid; grid-template-columns:36px minmax(0,1fr) 16px; grid-template-rows:auto 1fr; column-gap:12px; row-gap:7px; align-content:start; min-height:142px; padding:18px 16px; border:1px solid #2b344d; border-radius:13px; background:var(--card); color:var(--text); text-decoration:none; transition:transform .15s,border-color .15s,background .15s; }
+    .card:hover { transform:translateY(-3px); background:#1d2740; border-color:#8e7bc4; }
+    .card:focus-visible,.heart-trigger:focus-visible,.trapdoor:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+    .icon-box { grid-column:1; grid-row:1 / span 2; display:grid; place-items:center; width:36px; height:36px; border-radius:10px; background:#252e47; font-size:20px; }
+    .card h2 { grid-column:2; grid-row:1; min-width:0; overflow-wrap:break-word; font-size:16px; line-height:1.35; font-weight:650; letter-spacing:-.2px; margin:1px 0 0; }
+    .card p { grid-column:2; grid-row:2; min-width:0; overflow-wrap:break-word; color:var(--muted); font-size:14px; line-height:1.5; margin:0; }
+    .arrow { grid-column:3; grid-row:1; color:#929dba; font-size:17px; }
+    .chaos-label { display:none; }
+    .card.chaotic { border-color:#7b629f; background:linear-gradient(120deg,#282039,var(--card)); }
+    .card.chaotic .icon-box { box-shadow:0 0 0 1px #9d82c4; }
+    footer { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 20px; margin-top:20px; color:var(--muted); font-size:12px; }
+    footer > div:last-child { flex-basis:100%; text-align:right; }
+    footer .heart { color:#f472b6; }
+    .heart-trigger { min-width:44px; min-height:44px; font:inherit; border:0; background:transparent; cursor:pointer; touch-action:manipulation; }
+    .trapdoor { display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; color:var(--accent); border:1px solid #65527e; border-radius:14px; background:#141b2e; }
+    .trapdoor[hidden] { display:none; }
+    .trapdoor:hover { color:#67e8f9; }
+    .trapdoor svg { width:46px; height:46px; }
+    @media(max-width:620px) { .page { width:calc(100% - 40px); padding-top:24px; } .projects { grid-template-columns:repeat(2,minmax(0,1fr)); } .card { grid-template-columns:1fr 16px; } .icon-box { grid-column:1; grid-row:1; } .card h2 { grid-column:1 / -1; grid-row:2; } .card p { grid-column:1 / -1; grid-row:3; } .arrow { grid-column:2; } }
+    @media(max-width:540px) { .projects { grid-template-columns:1fr; } .card { grid-template-columns:36px minmax(0,1fr) 16px; min-height:110px; } .icon-box { grid-column:1; grid-row:1 / span 2; } .card h2 { grid-column:2; grid-row:1; } .card p { grid-column:2; grid-row:2; } .arrow { grid-column:3; } footer { align-items:flex-start; flex-direction:column; } }
+    @media(prefers-reduced-motion:reduce) { .card { transition:none; } .card:hover { transform:none; } }
   </style>
 </head>
 
@@ -352,7 +53,7 @@ export default {
       </div>
 
       <h1>
-        Shaurya's Website ✨</span>
+        Shaurya's Website ✨
       </h1>
 
       <p class="subtitle">
@@ -431,8 +132,7 @@ export default {
         <div class="icon-box">🗳️</div>
         <h2>Road to 270</h2>
         <p>
-          Build your candidate, campaign across the country,
-          and win 270 electoral votes.
+          Build a campaign and win the White House.
         </p>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
@@ -511,63 +211,10 @@ export default {
       }
     });
 
-    // The original collection of weird colors
-    const weirdColors = [
-      "#ff00ff", // Neon pink
-      "#39ff14", // Radioactive green
-      "#ff4500", // Bright orange
-      "#9400d3", // Electric purple
-      "#00ffff", // Cyan
-      "#ffff00", // Bright yellow
-      "#ff1493", // Deep pink
-      "#7fff00", // Chartreuse
-      "#ff69b4", // Hot pink
-      "#00ff7f", // Spring green
-      "#ff0000", // Bright red
-      "#8a2be2"  // Blue violet
-    ];
-
-    // Get all project cards
     const cards = document.querySelectorAll(".card");
-
-    // Randomly choose one card
-    const randomCard = Math.floor(
-      Math.random() * cards.length
-    );
-
-    // Randomly choose one weird color
-    const randomColor = weirdColors[
-      Math.floor(Math.random() * weirdColors.length)
-    ];
-
-    // Apply the random weirdness
-    const chosenCard = cards[randomCard];
-
+    const chosenCard = cards[Math.floor(Math.random() * cards.length)];
     chosenCard.classList.add("chaotic");
-    chosenCard.style.backgroundColor = randomColor;
-
-    // Use white text on darker weird colors
-    const darkColors = [
-      "#9400d3",
-      "#ff0000",
-      "#8a2be2"
-    ];
-
-    if (darkColors.includes(randomColor)) {
-      chosenCard.style.color = "#ffffff";
-
-      chosenCard.querySelector("p").style.color =
-        "rgba(255,255,255,0.85)";
-
-      chosenCard.querySelector(".arrow").style.color =
-        "#ffffff";
-
-      chosenCard.querySelector(".chaos-label").style.color =
-        "#ffffff";
-
-      chosenCard.querySelector(".chaos-label").style.background =
-        "rgba(0,0,0,0.25)";
-    }
+    chosenCard.querySelector(".icon-box").title = "✨ Chaotic Pick";
   </script>
 
 </body>
