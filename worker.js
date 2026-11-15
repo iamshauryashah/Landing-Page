@@ -8,7 +8,7 @@ export default {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0b1020">
   <meta name="description" content="Shaurya's websites — projects, experiments, games, and more.">
-  <title>Shaurya's Website ✨</title>
+  <title>Shaurya's Websites ✨</title>
 
   <style>
     :root { color-scheme: dark; --background:#0b1020; --card:#171f33; --text:#f0f2fa; --muted:#a9b2c9; --accent:#c4b5fd; }
@@ -56,13 +56,12 @@ export default {
       </div>
 
       <h1>
-        Shaurya's Website ✨
+        Shaurya's Websites ✨
       </h1>
 
       <p class="subtitle">
-        Projects, experiments, games, and whatever
-        I decide to build next. Pick something
-        interesting and dive in.
+        Projects, experiments, games, and so much more...
+        Pick something interesting and dive in!
       </p>
     </header>
 
