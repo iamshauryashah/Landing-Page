@@ -14,22 +14,24 @@ export default {
     :root { color-scheme: dark; --background:#0b1020; --card:#171f33; --text:#f0f2fa; --muted:#a9b2c9; --accent:#c4b5fd; }
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:radial-gradient(ellipse at 10% 0%,#231841 0,transparent 55%),var(--background); color:var(--text); }
-    .page { width:min(calc(100% - 64px),1600px); margin:0 auto; padding:28px 0 18px; }
+    .page { width:min(calc(100% - clamp(32px,5vw,96px)),1800px); margin:0 auto; padding:28px 0 18px; }
     .hero { margin-bottom:24px; }
     .eyebrow { color:var(--muted); font-size:14px; font-weight:600; }
     h1 { font-size:clamp(28px,3vw,36px); line-height:1.2; letter-spacing:-1px; margin:20px 0 8px; }
     .subtitle { color:var(--muted); font-size:14px; line-height:1.6; max-width:760px; margin:0; }
-    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:14px; }
-    .card { position:relative; display:grid; grid-template-columns:36px minmax(0,1fr) 16px; grid-template-rows:auto 1fr; column-gap:12px; row-gap:7px; align-content:start; min-height:142px; padding:18px 16px; border:1px solid #2b344d; border-radius:13px; background:var(--card); color:var(--text); text-decoration:none; transition:transform .15s,border-color .15s,background .15s; }
+    .projects { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(14px,1.5vw,24px); }
+    .card { position:relative; display:grid; grid-template-columns:clamp(40px,3.5vw,56px) minmax(0,1fr) 20px; grid-template-rows:24px auto 1fr; column-gap:clamp(12px,1.2vw,20px); row-gap:8px; align-content:start; min-height:clamp(176px,21vh,240px); padding:clamp(18px,1.8vw,30px); border:1px solid #2b344d; border-radius:13px; background:var(--card); color:var(--text); text-decoration:none; transition:transform .15s,border-color .15s,background .15s; }
     .card:hover { transform:translateY(-3px); background:#1d2740; border-color:#8e7bc4; }
     .card:focus-visible,.heart-trigger:focus-visible,.trapdoor:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
-    .icon-box { grid-column:1; grid-row:1 / span 2; display:grid; place-items:center; width:36px; height:36px; border-radius:10px; background:#252e47; font-size:20px; }
-    .card h2 { grid-column:2; grid-row:1; min-width:0; overflow-wrap:break-word; font-size:16px; line-height:1.35; font-weight:650; letter-spacing:-.2px; margin:1px 0 0; }
-    .card p { grid-column:2; grid-row:2; min-width:0; overflow-wrap:break-word; color:var(--muted); font-size:14px; line-height:1.5; margin:0; }
-    .arrow { grid-column:3; grid-row:1; color:#929dba; font-size:17px; }
-    .chaos-label { display:none; }
-    .card.chaotic { border-color:#7b629f; background:linear-gradient(120deg,#282039,var(--card)); }
-    .card.chaotic .icon-box { box-shadow:0 0 0 1px #9d82c4; }
+    .icon-box { grid-column:1; grid-row:2 / span 2; display:grid; place-items:center; width:clamp(40px,3.5vw,56px); height:clamp(40px,3.5vw,56px); border-radius:12px; background:#252e47; font-size:clamp(22px,2vw,30px); }
+    .card h2 { grid-column:2; grid-row:2; min-width:0; overflow-wrap:break-word; font-size:clamp(18px,1.4vw,22px); line-height:1.35; font-weight:650; letter-spacing:-.2px; margin:1px 0 0; }
+    .card p { grid-column:2; grid-row:3; min-width:0; overflow-wrap:break-word; color:var(--muted); font-size:clamp(14px,1.05vw,16px); line-height:1.5; margin:0; }
+    .arrow { grid-column:3; grid-row:2; color:#929dba; font-size:17px; }
+    .chaos-label { grid-column:1 / -1; grid-row:1; justify-self:end; visibility:hidden; font-size:11px; line-height:20px; font-weight:750; padding:2px 9px; border-radius:100px; background:rgba(255,255,255,.35); color:inherit; }
+    .card.chaotic .chaos-label { visibility:visible; }
+    .card.chaotic { background:var(--chaos-bg); color:var(--chaos-ink); border-color:var(--chaos-ink); }
+    .card.chaotic p,.card.chaotic .arrow { color:var(--chaos-ink); }
+    .card.chaotic .icon-box { background:rgba(128,128,128,.25); }
     footer { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 20px; margin-top:20px; color:var(--muted); font-size:12px; }
     footer > div:last-child { flex-basis:100%; text-align:right; }
     footer .heart { color:#f472b6; }
@@ -38,8 +40,9 @@ export default {
     .trapdoor[hidden] { display:none; }
     .trapdoor:hover { color:#67e8f9; }
     .trapdoor svg { width:46px; height:46px; }
-    @media(max-width:620px) { .page { width:calc(100% - 40px); padding-top:24px; } .projects { grid-template-columns:repeat(2,minmax(0,1fr)); } .card { grid-template-columns:1fr 16px; } .icon-box { grid-column:1; grid-row:1; } .card h2 { grid-column:1 / -1; grid-row:2; } .card p { grid-column:1 / -1; grid-row:3; } .arrow { grid-column:2; } }
-    @media(max-width:540px) { .projects { grid-template-columns:1fr; } .card { grid-template-columns:36px minmax(0,1fr) 16px; min-height:110px; } .icon-box { grid-column:1; grid-row:1 / span 2; } .card h2 { grid-column:2; grid-row:1; } .card p { grid-column:2; grid-row:2; } .arrow { grid-column:3; } footer { align-items:flex-start; flex-direction:column; } }
+    @media(min-width:1800px) { .projects { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+    @media(max-width:1000px) { .projects { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:620px) { .page { width:calc(100% - 32px); padding-top:24px; } .projects { grid-template-columns:1fr; } .card { min-height:170px; } footer { align-items:flex-start; flex-direction:column; } }
     @media(prefers-reduced-motion:reduce) { .card { transition:none; } .card:hover { transform:none; } }
   </style>
 </head>
@@ -214,7 +217,14 @@ export default {
     const cards = document.querySelectorAll(".card");
     const chosenCard = cards[Math.floor(Math.random() * cards.length)];
     chosenCard.classList.add("chaotic");
-    chosenCard.querySelector(".icon-box").title = "✨ Chaotic Pick";
+    const weirdColors = ["#ff00ff","#39ff14","#ff4500","#9400d3","#00ffff","#ffff00","#ff1493","#7fff00","#ff69b4","#00ff7f","#ff0000","#8a2be2"];
+    const randomColor = weirdColors[Math.floor(Math.random() * weirdColors.length)];
+    // Choose the more readable of black and white for every random color.
+    const rgb = randomColor.slice(1).match(/../g).map(value => parseInt(value,16)/255);
+    const linear = rgb.map(value => value <= 0.04045 ? value/12.92 : Math.pow((value+0.055)/1.055,2.4));
+    const luminance = linear[0]*0.2126 + linear[1]*0.7152 + linear[2]*0.0722;
+    chosenCard.style.setProperty("--chaos-bg",randomColor);
+    chosenCard.style.setProperty("--chaos-ink",luminance > 0.179 ? "#000000" : "#ffffff");
   </script>
 
 </body>
