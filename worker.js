@@ -225,6 +225,7 @@ export default {
     chosenCard.style.setProperty("--chaos-ink",luminance > 0.179 ? "#000000" : "#ffffff");
   </script>
 
+<script defer src="https://feedback.shauryaswebsites.com/widget.js"></script>
 </body>
 </html>`;
 
