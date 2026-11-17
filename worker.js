@@ -227,6 +227,7 @@ export default {
 
 <script defer src="https://feedback.shauryaswebsites.com/widget.js"></script>
 <script defer src="https://navigation.shauryaswebsites.com/launcher.js"></script>
+<script defer src="https://auth.shauryaswebsites.com/widget.js"></script>
 </body>
 </html>`;
 
