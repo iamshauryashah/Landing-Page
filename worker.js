@@ -67,7 +67,7 @@ export default {
     <section class="projects" aria-label="My projects">
 
       <a class="card"
-         href="https://midterm-uj.shauryaswebsite.com/">
+         href="https://midterm-uj.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">🎓</div>
         <h2>Midterm-UJ</h2>
@@ -78,7 +78,7 @@ export default {
       </a>
 
       <a class="card"
-         href="https://gerry.shauryaswebsite.com/">
+         href="https://gerry.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">🦎</div>
         <h2>Gerry the Salamander</h2>
@@ -90,7 +90,7 @@ export default {
       </a>
 
       <a class="card"
-         href="https://race.shauryaswebsite.com/">
+         href="https://race.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">🏁</div>
         <h2>Race to Whitehouse</h2>
@@ -102,7 +102,7 @@ export default {
       </a>
 
       <a class="card"
-         href="https://hello.shauryaswebsite.com/">
+         href="https://hello.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">👋</div>
         <h2>About Me</h2>
@@ -150,7 +150,7 @@ export default {
       </a>
 
       <a class="card"
-         href="https://army.shauryaswebsite.com/">
+         href="https://army.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">🛡️</div>
         <h2>Army Game</h2>
