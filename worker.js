@@ -11,6 +11,7 @@ export default {
   <title>Shaurya's Websites ✨</title>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap');
     :root { color-scheme: dark; --background:#0b1020; --card:#171f33; --text:#f0f2fa; --muted:#a9b2c9; --accent:#c4b5fd; }
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:radial-gradient(ellipse at 10% 0%,#231841 0,transparent 55%),var(--background); color:var(--text); }
@@ -33,6 +34,9 @@ export default {
     .card.chaotic { background:var(--chaos-bg); color:var(--chaos-ink); border-color:var(--chaos-ink); }
     .card.chaotic p,.card.chaotic .arrow { color:var(--chaos-ink); }
     .card.chaotic .icon-box { background:rgba(128,128,128,.25); }
+    .card .touchline-icon, .card.chaotic .touchline-icon { background:#112e26; color:#d9ef86; }
+    .touchline-icon .brand-icon { font:800 32px/1 'DM Sans',sans-serif; letter-spacing:-6px; }
+    .touchline-icon .brand-icon span { font-size:22px; }
     footer { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 20px; margin-top:20px; color:var(--muted); font-size:12px; }
     footer > div:last-child { flex-basis:100%; text-align:right; }
     footer .heart { color:#f472b6; }
@@ -165,7 +169,7 @@ export default {
       <a class="card"
          href="https://soccermanager.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
-        <div class="icon-box" aria-hidden="true">T•</div>
+        <div class="icon-box touchline-icon" aria-hidden="true"><span class="brand-icon">T<span>•</span></span></div>
         <h2>Touchline</h2>
         <p>
           Your club. Your decisions. Build a squad and lead it to the title.
