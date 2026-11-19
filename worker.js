@@ -1,14 +1,37 @@
 
 export default {
   async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    // Prefer one public homepage; effective on the apex only if Cloudflare routes it here.
+    if (url.hostname === "shauryaswebsites.com") {
+      url.hostname = "www.shauryaswebsites.com";
+      return Response.redirect(url.toString(), 301);
+    }
+    if (url.pathname === "/robots.txt") {
+      return new Response("User-agent: *\\nAllow: /\\nSitemap: https://www.shauryaswebsites.com/sitemap.xml\\n", {
+        headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" }
+      });
+    }
+    if (url.pathname === "/sitemap.xml") {
+      return new Response('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://www.shauryaswebsites.com/</loc></url></urlset>', {
+        headers: { "Content-Type": "application/xml; charset=utf-8", "Cache-Control": "public, max-age=3600" }
+      });
+    }
     const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0b1020">
-  <meta name="description" content="Shaurya's websites — projects, experiments, games, and more.">
-  <title>Shaurya's Websites ✨</title>
+  <meta name="description" content="Shaurya's Websites — build an empire, lead your soccer team to championship glory, or try something unexpected. Explore games, projects and experiments.">
+  <link rel="canonical" href="https://www.shauryaswebsites.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shaurya's Websites">
+  <meta property="og:title" content="Shaurya's Websites — Games, Projects &amp; Experiments">
+  <meta property="og:description" content="Build an empire, lead your soccer team to championship glory, or try something unexpected. Your move...">
+  <meta property="og:url" content="https://www.shauryaswebsites.com/">
+  <meta name="twitter:card" content="summary">
+  <title>Shaurya's Websites — Games, Projects &amp; Experiments</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap');
