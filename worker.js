@@ -21,6 +21,7 @@ export default {
     .subtitle { color:var(--muted); font-size:14px; line-height:1.6; max-width:760px; margin:0; }
     .projects { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(14px,1.5vw,24px); }
     .card { position:relative; display:grid; grid-template-columns:clamp(40px,3.5vw,56px) minmax(0,1fr) 20px; grid-template-rows:24px auto 1fr; column-gap:clamp(12px,1.2vw,20px); row-gap:8px; align-content:start; min-height:clamp(176px,21vh,240px); padding:clamp(18px,1.8vw,30px); border:1px solid #2b344d; border-radius:13px; background:var(--card); color:var(--text); text-decoration:none; transition:transform .15s,border-color .15s,background .15s; }
+    .card[hidden] { display:none; }
     .card:hover { transform:translateY(-3px); background:#1d2740; border-color:#8e7bc4; }
     .card:focus-visible,.heart-trigger:focus-visible,.trapdoor:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
     .icon-box { grid-column:1; grid-row:2 / span 2; display:grid; place-items:center; width:clamp(40px,3.5vw,56px); height:clamp(40px,3.5vw,56px); border-radius:12px; background:#252e47; font-size:clamp(22px,2vw,30px); }
@@ -173,6 +174,14 @@ export default {
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
+      <a class="card" id="admin-project" href="https://auth.shauryaswebsites.com/admin" hidden>
+        <div class="chaos-label">✨ Chaotic Pick</div>
+        <div class="icon-box">🛡️</div>
+        <h2>Admin Dashboard</h2>
+        <p>Manage users and access across Shaurya's Websites.</p>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+
     </section>
 
     <footer>
@@ -212,7 +221,7 @@ export default {
       }
     });
 
-    const cards = document.querySelectorAll(".card");
+    const cards = document.querySelectorAll(".card:not([hidden])");
     const chosenCard = cards[Math.floor(Math.random() * cards.length)];
     chosenCard.classList.add("chaotic");
     const weirdColors = ["#ff00ff","#39ff14","#ff4500","#9400d3","#00ffff","#ffff00","#ff1493","#7fff00","#ff69b4","#00ff7f","#ff0000","#8a2be2"];
@@ -223,6 +232,14 @@ export default {
     const luminance = linear[0]*0.2126 + linear[1]*0.7152 + linear[2]*0.0722;
     chosenCard.style.setProperty("--chaos-bg",randomColor);
     chosenCard.style.setProperty("--chaos-ink",luminance > 0.179 ? "#000000" : "#ffffff");
+  </script>
+  <script>
+    // Shared login widget dispatches this after checking the server-side session.
+    // Access is enforced by the authentication Worker; this only controls visibility.
+    window.addEventListener("shaurya:auth-changed", event => {
+      const adminTile = document.getElementById("admin-project");
+      if (adminTile) adminTile.hidden = event.detail?.user?.isAdmin !== true;
+    });
   </script>
 
 <script defer src="https://feedback.shauryaswebsites.com/widget.js"></script>
