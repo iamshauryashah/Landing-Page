@@ -170,7 +170,7 @@ export default {
          href="https://soccermanager.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box touchline-icon" aria-hidden="true"><span class="brand-icon">T<span>•</span></span></div>
-        <h2>Soccer Championship Glory</h2>
+        <h2>Touchline · Soccer Manager</h2>
         <p>
           Sign players, set your lineup, and lead your club to the title.
         </p>
