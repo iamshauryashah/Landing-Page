@@ -71,7 +71,7 @@ export default {
 
     <section class="projects" aria-label="My projects">
 
-      <a class="card"
+      <a class="card" data-page="midterm" hidden
          href="https://midterm-uj.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">🎓</div>
@@ -82,7 +82,7 @@ export default {
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <a class="card"
+      <a class="card" data-page="gerry" hidden
          href="https://gerry.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">🦎</div>
@@ -94,7 +94,7 @@ export default {
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <a class="card"
+      <a class="card" data-page="race" hidden
          href="https://race.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">🏁</div>
@@ -106,7 +106,7 @@ export default {
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <a class="card"
+      <a class="card" data-page="about" hidden
          href="https://hello.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">👋</div>
@@ -119,7 +119,7 @@ export default {
       </a>
 
 
-      <a class="card"
+      <a class="card" data-page="qed" hidden
          href="https://qed.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">🧩</div>
@@ -132,7 +132,7 @@ export default {
       </a>
 
 
-      <a class="card"
+      <a class="card" data-page="road-to-270" hidden
          href="https://presidentialsim.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">🗳️</div>
@@ -143,7 +143,7 @@ export default {
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <a class="card"
+      <a class="card" data-page="soccer-sim" hidden
          href="https://soccersim.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">⚽</div>
@@ -154,7 +154,7 @@ export default {
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <a class="card"
+      <a class="card" data-page="army" hidden
          href="https://army.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">🛡️</div>
@@ -166,7 +166,7 @@ export default {
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <a class="card"
+      <a class="card" data-page="touchline" hidden
          href="https://soccermanager.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box touchline-icon" aria-hidden="true"><span class="brand-icon">T<span>•</span></span></div>
@@ -177,7 +177,7 @@ export default {
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <a class="card" id="admin-project" href="https://auth.shauryaswebsites.com/admin" hidden>
+      <a class="card" data-page="admin" hidden id="admin-project" href="https://auth.shauryaswebsites.com/admin">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box" aria-hidden="true">🎛️</div>
         <h2>Admin Dashboard</h2>
@@ -224,25 +224,54 @@ export default {
       }
     });
 
-    const cards = document.querySelectorAll(".card:not([hidden])");
-    const chosenCard = cards[Math.floor(Math.random() * cards.length)];
-    chosenCard.classList.add("chaotic");
-    const weirdColors = ["#ff00ff","#39ff14","#ff4500","#9400d3","#00ffff","#ffff00","#ff1493","#7fff00","#ff69b4","#00ff7f","#ff0000","#8a2be2"];
-    const randomColor = weirdColors[Math.floor(Math.random() * weirdColors.length)];
-    // Choose the more readable of black and white for every random color.
-    const rgb = randomColor.slice(1).match(/../g).map(value => parseInt(value,16)/255);
-    const linear = rgb.map(value => value <= 0.04045 ? value/12.92 : Math.pow((value+0.055)/1.055,2.4));
-    const luminance = linear[0]*0.2126 + linear[1]*0.7152 + linear[2]*0.0722;
-    chosenCard.style.setProperty("--chaos-bg",randomColor);
-    chosenCard.style.setProperty("--chaos-ink",luminance > 0.179 ? "#000000" : "#ffffff");
+    function pickChaoticCard() {
+      const previous = document.querySelector(".card.chaotic");
+      if (previous && !previous.hidden) return;
+      previous?.classList.remove("chaotic");
+      const cards = document.querySelectorAll(".card[data-page]:not([hidden])");
+      if (!cards.length) return;
+      const chosenCard = cards[Math.floor(Math.random() * cards.length)];
+      chosenCard.classList.add("chaotic");
+      const weirdColors = ["#ff00ff","#39ff14","#ff4500","#9400d3","#00ffff","#ffff00","#ff1493","#7fff00","#ff69b4","#00ff7f","#ff0000","#8a2be2"];
+      const randomColor = weirdColors[Math.floor(Math.random() * weirdColors.length)];
+      // Choose the more readable of black and white for every random color.
+      const rgb = randomColor.slice(1).match(/../g).map(value => parseInt(value,16)/255);
+      const linear = rgb.map(value => value <= 0.04045 ? value/12.92 : Math.pow((value+0.055)/1.055,2.4));
+      const luminance = linear[0]*0.2126 + linear[1]*0.7152 + linear[2]*0.0722;
+      chosenCard.style.setProperty("--chaos-bg",randomColor);
+      chosenCard.style.setProperty("--chaos-ink",luminance > 0.179 ? "#000000" : "#ffffff");
+    }
   </script>
   <script>
-    // Shared login widget dispatches this after checking the server-side session.
-    // Access is enforced by the authentication Worker; this only controls visibility.
-    window.addEventListener("shaurya:auth-changed", event => {
-      const adminTile = document.getElementById("admin-project");
-      if (adminTile) adminTile.hidden = event.detail?.user?.isAdmin !== true;
-    });
+    const projectTiles = Array.from(document.querySelectorAll(".card[data-page]"));
+    let accessGeneration = 0;
+
+    async function refreshProjectAccess() {
+      const generation = ++accessGeneration;
+      for (const tile of projectTiles) tile.hidden = true;
+
+      const decisions = await Promise.all(projectTiles.map(async tile => {
+        const page = tile.dataset.page;
+        try {
+          const response = await fetch("https://auth.shauryaswebsites.com/api/page-access/" + encodeURIComponent(page), {
+            credentials: "include",
+            cache: "no-store"
+          });
+          if (!response.ok) return false;
+          const access = await response.json();
+          return access.page === page && access.allowed === true;
+        } catch {
+          return false;
+        }
+      }));
+
+      if (generation !== accessGeneration) return;
+      projectTiles.forEach((tile, index) => { tile.hidden = !decisions[index]; });
+      pickChaoticCard();
+    }
+
+    window.addEventListener("shaurya:auth-changed", refreshProjectAccess);
+    void refreshProjectAccess();
   </script>
 
 <script defer src="https://feedback.shauryaswebsites.com/widget.js"></script>
