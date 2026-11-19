@@ -179,7 +179,7 @@ export default {
 
       <a class="card" id="admin-project" href="https://auth.shauryaswebsites.com/admin" hidden>
         <div class="chaos-label">✨ Chaotic Pick</div>
-        <div class="icon-box">🛡️</div>
+        <div class="icon-box" aria-hidden="true">🎛️</div>
         <h2>Admin Dashboard</h2>
         <p>Manage users and access across Shaurya's Websites.</p>
         <span class="arrow" aria-hidden="true">↗</span>
