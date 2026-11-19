@@ -172,7 +172,7 @@ export default {
         <div class="icon-box touchline-icon" aria-hidden="true"><span class="brand-icon">T<span>•</span></span></div>
         <h2>Touchline · Soccer Manager</h2>
         <p>
-          Sign players, set your lineup, and lead your club to the title.
+          Sign players, set your lineup, and lead your club to Soccer Championship Glory.
         </p>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
