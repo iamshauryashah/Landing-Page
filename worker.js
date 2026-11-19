@@ -8,7 +8,7 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
     if (url.pathname === "/robots.txt") {
-      return new Response("User-agent: *\\nAllow: /\\nSitemap: https://www.shauryaswebsites.com/sitemap.xml\\n", {
+      return new Response("User-agent: *\nAllow: /\nSitemap: https://www.shauryaswebsites.com/sitemap.xml\n", {
         headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" }
       });
     }
