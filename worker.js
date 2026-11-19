@@ -143,9 +143,9 @@ export default {
          href="https://soccersim.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
         <div class="icon-box">⚽</div>
-        <h2>Soccer Sim</h2>
+        <h2>League Lab</h2>
         <p>
-          Jump into the soccer league simulator.
+          Twenty clubs. Four philosophies. One champion.
         </p>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
@@ -165,11 +165,10 @@ export default {
       <a class="card"
          href="https://soccermanager.shauryaswebsites.com/">
         <div class="chaos-label">✨ Chaotic Pick</div>
-        <div class="icon-box">📋</div>
-        <h2>Soccer Manager</h2>
+        <div class="icon-box" aria-hidden="true">T•</div>
+        <h2>Touchline</h2>
         <p>
-          Build your squad, manage your budget,
-          and lead your club to victory.
+          Your club. Your decisions. Build a squad and lead it to the title.
         </p>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
